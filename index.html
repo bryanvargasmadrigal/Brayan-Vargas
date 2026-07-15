@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brayan Vargas Madrigal — IT Support &amp; Cybersecurity</title>
+<meta name="description" content="Portfolio of Brayan Vargas Madrigal — IT Support Technician and Cybersecurity practitioner based in Costa Rica.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #10171c;
+    --surface: #161f26;
+    --surface-2: #1c2731;
+    --line: #2a3742;
+    --text: #e7edf0;
+    --muted: #8fa1ab;
+    --up: #49d3a0;
+    --up-dim: #2c5c4d;
+    --amber: #e2a23d;
+    --mono: 'IBM Plex Mono', ui-monospace, monospace;
+    --sans: 'IBM Plex Sans', system-ui, sans-serif;
+  }
+
+  * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body{
+    margin:0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: inherit; }
+
+  .wrap{
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ---------- top bar ---------- */
+  .topbar{
+    border-bottom: 1px solid var(--line);
+    background: var(--bg);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+  .topbar-inner{
+    display:flex;
+    align-items:center;
+    justify-content: space-between;
+    padding: 14px 24px;
+    max-width: 880px;
+    margin: 0 auto;
+    font-family: var(--mono);
+    font-size: 13px;
+  }
+  .brand{ color: var(--text); text-decoration:none; font-weight:600; letter-spacing: 0.02em; }
+  .topnav{ display:flex; gap: 20px; }
+  .topnav a{ color: var(--muted); text-decoration:none; }
+  .topnav a:hover, .topnav a:focus-visible{ color: var(--up); }
+  .topnav a:focus-visible{ outline: 1px solid var(--up); outline-offset: 3px; }
+
+  /* ---------- hero ---------- */
+  .hero{ padding: 72px 0 40px; }
+  .hero-top{
+    display:flex;
+    align-items:flex-start;
+    justify-content: space-between;
+    gap: 36px;
+  }
+  .hero-copy{ flex: 1 1 auto; min-width: 0; }
+  .cam-window{
+    flex: 0 0 auto;
+    width: 168px;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    overflow: hidden;
+    background: var(--surface);
+  }
+  .cam-titlebar{
+    display:flex;
+    align-items:center;
+    gap: 6px;
+    padding: 8px 10px;
+    border-bottom: 1px solid var(--line);
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--muted);
+  }
+  .cam-titlebar .dots{ display:flex; gap: 5px; margin-right: 4px; }
+  .cam-titlebar .dot-sm{ width:7px; height:7px; border-radius:50%; background: var(--line); }
+  .cam-titlebar .dot-sm.red{ background:#e2604a; }
+  .cam-titlebar .dot-sm.yellow{ background:#e2a23d; }
+  .cam-titlebar .dot-sm.green{ background:var(--up); }
+  .cam-window img{
+    display:block;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    filter: grayscale(0.25) contrast(1.05);
+  }
+  @media (max-width: 640px){
+    .hero-top{ flex-direction: column-reverse; }
+    .cam-window{ width: 128px; }
+  }
+  .status-line{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-family: var(--mono);
+    font-size: 12.5px;
+    color: var(--up);
+    background: rgba(73,211,160,0.08);
+    border: 1px solid var(--up-dim);
+    padding: 5px 12px;
+    border-radius: 3px;
+    margin-bottom: 22px;
+  }
+  .dot{
+    width:7px; height:7px; border-radius:50%;
+    background: var(--up);
+    box-shadow: 0 0 0 0 rgba(73,211,160,0.6);
+    animation: pulse 2.2s infinite;
+  }
+  @keyframes pulse{
+    0%{ box-shadow: 0 0 0 0 rgba(73,211,160,0.45); }
+    70%{ box-shadow: 0 0 0 7px rgba(73,211,160,0); }
+    100%{ box-shadow: 0 0 0 0 rgba(73,211,160,0); }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .dot{ animation: none; }
+  }
+
+  h1{
+    font-family: var(--mono);
+    font-weight: 600;
+    font-size: clamp(28px, 5vw, 40px);
+    margin: 0 0 10px;
+    letter-spacing: -0.01em;
+  }
+  .role{
+    font-size: 18px;
+    color: var(--muted);
+    margin: 0 0 26px;
+    max-width: 56ch;
+  }
+  .role strong{ color: var(--text); font-weight: 600; }
+
+  .hero-actions{ display:flex; gap:12px; flex-wrap: wrap; }
+  .btn{
+    font-family: var(--mono);
+    font-size: 13px;
+    text-decoration:none;
+    padding: 10px 16px;
+    border-radius: 3px;
+    border: 1px solid var(--line);
+    color: var(--text);
+    transition: border-color .15s ease, color .15s ease;
+  }
+  .btn:hover, .btn:focus-visible{ border-color: var(--up); color: var(--up); }
+  .btn.primary{ background: var(--up); border-color: var(--up); color: #0b1613; font-weight: 600; }
+  .btn.primary:hover, .btn.primary:focus-visible{ background: #3fc194; color:#0b1613; }
+  .btn:focus-visible{ outline: 2px solid var(--up); outline-offset: 2px; }
+
+  /* ---------- section shell ---------- */
+  section{ padding: 44px 0; border-top: 1px solid var(--line); }
+  .eyebrow{
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin: 0 0 18px;
+  }
+  h2{ font-family: var(--mono); font-size: 20px; margin: 0 0 6px; }
+
+  /* ---------- status board (signature element) ---------- */
+  .board{
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    overflow: hidden;
+    font-family: var(--mono);
+    font-size: 13.5px;
+  }
+  .board-row{
+    display:grid;
+    grid-template-columns: 120px 1fr 90px;
+    gap: 12px;
+    align-items:center;
+    padding: 11px 16px;
+    border-bottom: 1px solid var(--line);
+    background: var(--surface);
+  }
+  .board-row:last-child{ border-bottom:none; }
+  .board-row:nth-child(even){ background: var(--surface-2); }
+  .b-status{ display:flex; align-items:center; gap:7px; color: var(--up); }
+  .b-status .dot{ animation:none; box-shadow:none; }
+  .b-name{ color: var(--text); }
+  .b-note{ color: var(--muted); text-align:right; font-size: 12px; }
+
+  /* ---------- projects ---------- */
+  .projects{ display:flex; flex-direction:column; gap: 14px; }
+  .card{
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    background: var(--surface);
+    padding: 20px;
+  }
+  .card-head{
+    display:flex; justify-content:space-between; align-items:baseline; gap: 12px; flex-wrap:wrap;
+  }
+  .card h3{ font-family: var(--mono); font-size: 15.5px; margin:0; }
+  .card .tag{
+    font-family: var(--mono); font-size: 11px; color: var(--amber);
+    border: 1px solid rgba(226,162,61,0.35); padding: 2px 8px; border-radius: 3px;
+  }
+  .card .tag.progress{ color: var(--muted); border-color: var(--line); }
+  .card p{ color: var(--muted); margin: 10px 0 12px; font-size: 14.5px; }
+  .card .stack{ font-family: var(--mono); font-size: 12px; color: var(--muted); margin-bottom: 12px; }
+  .card a.link{ font-family: var(--mono); font-size: 13px; color: var(--up); text-decoration:none; }
+  .card a.link:hover, .card a.link:focus-visible{ text-decoration: underline; }
+
+  /* ---------- experience ---------- */
+  .exp-item{ display:grid; grid-template-columns: 120px 1fr; gap: 16px; padding: 14px 0; border-bottom: 1px dashed var(--line); }
+  .exp-item:last-child{ border-bottom:none; }
+  .exp-date{ font-family: var(--mono); font-size: 12.5px; color: var(--muted); }
+  .exp-role{ font-weight:600; margin: 0 0 4px; }
+  .exp-org{ color: var(--muted); font-size: 14px; margin: 0 0 6px; }
+  .exp-item ul{ margin: 6px 0 0; padding-left: 18px; color: var(--muted); font-size: 14px; }
+  .exp-item li{ margin-bottom: 4px; }
+
+  /* ---------- education ---------- */
+  .edu-item{ padding: 12px 0; border-bottom: 1px dashed var(--line); }
+  .edu-item:last-child{ border-bottom:none; }
+  .edu-degree{ font-weight:600; margin:0 0 3px; }
+  .edu-org{ color: var(--muted); font-size: 14px; margin: 0; }
+  .edu-date{ font-family: var(--mono); font-size: 12px; color: var(--muted); }
+
+  /* ---------- certs ---------- */
+  .certs{ display:flex; flex-wrap:wrap; gap:8px; }
+  .cert{
+    font-family: var(--mono); font-size: 12.5px;
+    border: 1px solid var(--line); border-radius: 3px;
+    padding: 6px 12px; color: var(--muted);
+  }
+
+  /* ---------- languages ---------- */
+  .lang-row{ display:flex; gap: 24px; font-family: var(--mono); font-size: 13.5px; margin-top: 6px; }
+  .lang-row span.lvl{ color: var(--up); }
+
+  /* ---------- contact ---------- */
+  .contact-box{
+    border: 1px solid var(--line); border-radius: 4px;
+    background: var(--surface); padding: 24px;
+    font-family: var(--mono); font-size: 14px;
+  }
+  .contact-box .prompt{ color: var(--up); }
+  .contact-links{ margin-top: 16px; display:flex; flex-wrap:wrap; gap: 18px; }
+  .contact-links a{ text-decoration:none; color: var(--text); border-bottom: 1px solid var(--line); }
+  .contact-links a:hover, .contact-links a:focus-visible{ color: var(--up); border-color: var(--up); }
+
+  footer{
+    padding: 28px 0 48px;
+    color: var(--muted);
+    font-family: var(--mono);
+    font-size: 12px;
+  }
+
+  @media (max-width: 560px){
+    .board-row{ grid-template-columns: 1fr; row-gap: 4px; }
+    .b-note{ text-align:left; }
+    .exp-item{ grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="#top">bvargasm</a>
+    <nav class="topnav">
+      <a href="#skills">skills</a>
+      <a href="#projects">projects</a>
+      <a href="#experience">experience</a>
+      <a href="#contact">contact</a>
+    </nav>
+  </div>
+</div>
+
+<div class="wrap" id="top">
+
+  <section class="hero" style="border-top:none;">
+    <div class="hero-top">
+      <div class="hero-copy">
+        <div class="status-line"><span class="dot"></span> AVAILABLE — open to remote &amp; Costa Rica-based roles</div>
+        <h1>Brayan Vargas Madrigal</h1>
+        <p class="role">
+          <strong>IT Support Technician &amp; Cybersecurity practitioner.</strong>
+          I keep systems running and I dig into the logs when they don't —
+          based in San José, Costa Rica, studying Computer Science at UCR
+          after completing a technical diploma in Cybersecurity.
+        </p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#contact">Get in touch</a>
+          <a class="btn" href="https://github.com/bryanvargasmadrigal" target="_blank" rel="noopener">GitHub ↗</a>
+          <a class="btn" href="#projects">See projects</a>
+        </div>
+      </div>
+      <div class="cam-window">
+        <div class="cam-titlebar">
+          <span class="dots"><span class="dot-sm red"></span><span class="dot-sm yellow"></span><span class="dot-sm green"></span></span>
+          webcam0
+        </div>
+        <img src="assets/profile.jpg" alt="Brayan Vargas Madrigal">
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <p class="eyebrow">// core services</p>
+    <h2>What I run day to day</h2>
+    <div class="board" style="margin-top:18px;">
+      <div class="board-row">
+        <div class="b-status"><span class="dot"></span>UP</div>
+        <div class="b-name">L1 Technical Support &amp; Incident Resolution (ITIL-aligned)</div>
+        <div class="b-note">daily</div>
+      </div>
+      <div class="board-row">
+        <div class="b-status"><span class="dot"></span>UP</div>
+        <div class="b-name">Hardware Diagnostics &amp; Remote Support (AnyDesk, TeamViewer)</div>
+        <div class="b-note">daily</div>
+      </div>
+      <div class="board-row">
+        <div class="b-status"><span class="dot"></span>UP</div>
+        <div class="b-name">Active Directory — user &amp; access management</div>
+        <div class="b-note">daily</div>
+      </div>
+      <div class="board-row">
+        <div class="b-status"><span class="dot"></span>UP</div>
+        <div class="b-name">SIEM &amp; log analysis (Wazuh &amp; Splunk), Wireshark</div>
+        <div class="b-note">homelab</div>
+      </div>
+      <div class="board-row">
+        <div class="b-status"><span class="dot"></span>UP</div>
+        <div class="b-name">Networking — TCP/IP, DNS, DHCP, Wi-Fi fundamentals</div>
+        <div class="b-note">daily</div>
+      </div>
+      <div class="board-row">
+        <div class="b-status"><span class="dot"></span>UP</div>
+        <div class="b-name">Scripting — PowerShell automation &amp; Python</div>
+        <div class="b-note">projects</div>
+      </div>
+      <div class="board-row">
+        <div class="b-status"><span class="dot"></span>UP</div>
+        <div class="b-name">Windows 10/11, Windows Server, Ubuntu Server &amp; Kali Linux</div>
+        <div class="b-note">daily</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <p class="eyebrow">// projects</p>
+    <h2>Things I've built</h2>
+    <div class="projects" style="margin-top:18px;">
+
+      <div class="card">
+        <div class="card-head">
+          <h3>Encrypted Backup Automation</h3>
+          <span class="tag">scripting</span>
+        </div>
+        <p>PowerShell script that automates encrypted backups with 7-Zip compression,
+        scheduled through Windows Task Scheduler so data protection doesn't depend on
+        someone remembering to run it.</p>
+        <div class="stack">PowerShell · 7-Zip · Task Scheduler</div>
+        <a class="link" href="https://github.com/bryanvargasmadrigal/Backup-and-security" target="_blank" rel="noopener">View repo →</a>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <h3>Network Health Checker</h3>
+          <span class="tag">networking</span>
+        </div>
+        <p>CLI tool that pings a list of hosts, scans common TCP ports (22, 80, 443, 3389),
+        and exports the results to CSV — built to catch a downed service before a ticket does.</p>
+        <div class="stack">Python · socket · subprocess · csv</div>
+        <a class="link" href="https://github.com/bryanvargasmadrigal/Network-Health-Checker" target="_blank" rel="noopener">View repo →</a>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <h3>Active Directory + Wazuh Security Lab</h3>
+          <span class="tag progress">in progress</span>
+        </div>
+        <p>Home lab pairing a virtualized Windows Domain Controller with a Wazuh SIEM instance,
+        built to practice user management, group policy, and real log visibility across
+        Security, System, Application, Directory Service and DNS event channels.</p>
+        <div class="stack">Wazuh · Active Directory · Windows Server</div>
+        <a class="link" href="https://github.com/bryanvargasmadrigal" target="_blank" rel="noopener">View on GitHub →</a>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <h3>Home Network Lab</h3>
+          <span class="tag">networking</span>
+        </div>
+        <p>Simulated real-world support scenarios to practice diagnostics and troubleshooting
+        across a home network environment.</p>
+        <div class="stack">TCP/IP · DNS · DHCP</div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="experience">
+    <p class="eyebrow">// experience</p>
+    <h2>Where I've worked</h2>
+
+    <div style="margin-top: 10px;">
+      <div class="exp-item">
+        <div class="exp-date">Oct 2025 — present</div>
+        <div>
+          <p class="exp-role">Technical Support Intern → Technical Support Assistant</p>
+          <p class="exp-org">Procuraduría General de la República, Costa Rica</p>
+          <ul>
+            <li>Provided L1 support to end users, diagnosing and resolving hardware and software incidents to minimize downtime</li>
+            <li>Performed preventive and corrective maintenance on desktops, laptops and peripherals</li>
+            <li>Logged, tracked and closed incidents following ITIL-aligned procedures within SLA targets</li>
+            <li>Communicated technical solutions clearly to non-technical internal stakeholders</li>
+            <li>Promoted to permanent staff after contract renewal, based on performance (Jan 2026)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="education">
+    <p class="eyebrow">// education</p>
+    <h2>Academic background</h2>
+    <div style="margin-top: 10px;">
+      <div class="edu-item">
+        <div class="edu-date">2026 — present</div>
+        <p class="edu-degree">B.Sc. in Computer Science (in progress)</p>
+        <p class="edu-org">Universidad de Costa Rica (UCR)</p>
+      </div>
+      <div class="edu-item">
+        <div class="edu-date">2023 — 2025</div>
+        <p class="edu-degree">Technical Diploma in Cybersecurity</p>
+        <p class="edu-org">C.T.P. José Albertazzi Avendaño</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <p class="eyebrow">// certifications</p>
+    <h2>Credentials</h2>
+    <div class="certs" style="margin-top:16px;">
+      <span class="cert">CCNA: Switching, Routing &amp; Wireless Essentials — Cisco</span>
+      <span class="cert">NDG Linux Essentials — Cisco Networking Academy</span>
+      <span class="cert">Google IT Support Professional Certificate</span>
+      <span class="cert">Ciberseguridad Defensiva — Udemy (32.5h)</span>
+      <span class="cert">Python Avanzado — Udemy (30.5h)</span>
+      <span class="cert">AZ-900: Azure Fundamentals — Microsoft (en progreso)</span>
+    </div>
+
+    <p class="eyebrow" style="margin-top: 32px;">// languages</p>
+    <div class="lang-row">
+      <div>Spanish — <span class="lvl">Native</span></div>
+      <div>English — <span class="lvl">B1 Intermediate</span></div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <p class="eyebrow">// contact</p>
+    <div class="contact-box">
+      <div><span class="prompt">$</span> whoami</div>
+      <div style="color: var(--muted); margin: 4px 0 14px;">Brayan Vargas Madrigal — San José, Costa Rica</div>
+      <div><span class="prompt">$</span> reach --out</div>
+      <div class="contact-links">
+        <a href="mailto:b_vargasmadrigal@outlook.com">b_vargasmadrigal@outlook.com</a>
+        <a href="tel:+50672078389">+506 7207-8389</a>
+        <a href="https://github.com/bryanvargasmadrigal" target="_blank" rel="noopener">github.com/bryanvargasmadrigal</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    Built by Brayan Vargas Madrigal · Costa Rica · <span id="year"></span>
+  </footer>
+
+</div>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
