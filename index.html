@@ -10,15 +10,17 @@
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg: #10171c;
-    --surface: #161f26;
-    --surface-2: #1c2731;
-    --line: #2a3742;
-    --text: #e7edf0;
-    --muted: #8fa1ab;
-    --up: #49d3a0;
-    --up-dim: #2c5c4d;
-    --amber: #e2a23d;
+    --bg: #060b12;
+    --surface: #0c141d;
+    --surface-2: #101c28;
+    --line: #1c2f40;
+    --line-bright: #294863;
+    --text: #dce8f2;
+    --muted: #6f8ca3;
+    --up: #35b8ff;
+    --up-dim: #133a52;
+    --cyan: #4de3d1;
+    --amber: #ff9d4d;
     --mono: 'IBM Plex Mono', ui-monospace, monospace;
     --sans: 'IBM Plex Sans', system-ui, sans-serif;
   }
@@ -29,7 +31,11 @@
 
   body{
     margin:0;
-    background: var(--bg);
+    background:
+      radial-gradient(ellipse 900px 500px at 15% -10%, rgba(53,184,255,0.10), transparent 60%),
+      radial-gradient(ellipse 700px 500px at 100% 20%, rgba(77,227,209,0.06), transparent 55%),
+      repeating-linear-gradient(0deg, rgba(255,255,255,0.012) 0px, rgba(255,255,255,0.012) 1px, transparent 1px, transparent 3px),
+      var(--bg);
     color: var(--text);
     font-family: var(--sans);
     line-height: 1.55;
@@ -47,7 +53,8 @@
   /* ---------- top bar ---------- */
   .topbar{
     border-bottom: 1px solid var(--line);
-    background: var(--bg);
+    background: rgba(6,11,18,0.85);
+    backdrop-filter: blur(6px);
     position: sticky;
     top: 0;
     z-index: 10;
@@ -62,14 +69,25 @@
     font-family: var(--mono);
     font-size: 13px;
   }
-  .brand{ color: var(--text); text-decoration:none; font-weight:600; letter-spacing: 0.02em; }
+  .brand{ color: var(--text); text-decoration:none; font-weight:600; letter-spacing: 0.02em; display:flex; align-items:center; gap:8px; }
+  .brand::before{
+    content:"";
+    width:8px; height:8px;
+    background: var(--up);
+    box-shadow: 0 0 8px 1px var(--up);
+    border-radius: 1px;
+  }
   .topnav{ display:flex; gap: 20px; }
   .topnav a{ color: var(--muted); text-decoration:none; }
   .topnav a:hover, .topnav a:focus-visible{ color: var(--up); }
   .topnav a:focus-visible{ outline: 1px solid var(--up); outline-offset: 3px; }
 
+  @media (max-width: 560px){
+    .topnav{ gap: 12px; font-size: 12px; }
+  }
+
   /* ---------- hero ---------- */
-  .hero{ padding: 72px 0 40px; }
+  .hero{ padding: 64px 0 40px; }
   .hero-top{
     display:flex;
     align-items:flex-start;
@@ -80,10 +98,11 @@
   .cam-window{
     flex: 0 0 auto;
     width: 168px;
-    border: 1px solid var(--line);
+    border: 1px solid var(--line-bright);
     border-radius: 6px;
     overflow: hidden;
     background: var(--surface);
+    box-shadow: 0 0 0 1px rgba(53,184,255,0.05), 0 12px 40px -12px rgba(53,184,255,0.25);
   }
   .cam-titlebar{
     display:flex;
@@ -97,15 +116,15 @@
   }
   .cam-titlebar .dots{ display:flex; gap: 5px; margin-right: 4px; }
   .cam-titlebar .dot-sm{ width:7px; height:7px; border-radius:50%; background: var(--line); }
-  .cam-titlebar .dot-sm.red{ background:#e2604a; }
-  .cam-titlebar .dot-sm.yellow{ background:#e2a23d; }
+  .cam-titlebar .dot-sm.red{ background:#ff5f6b; }
+  .cam-titlebar .dot-sm.yellow{ background:var(--amber); }
   .cam-titlebar .dot-sm.green{ background:var(--up); }
   .cam-window img{
     display:block;
     width: 100%;
     aspect-ratio: 1 / 1;
     object-fit: cover;
-    filter: grayscale(0.25) contrast(1.05);
+    filter: grayscale(0.3) contrast(1.08) saturate(0.9) sepia(0.12) hue-rotate(155deg);
   }
   @media (max-width: 640px){
     .hero-top{ flex-direction: column-reverse; }
@@ -118,7 +137,7 @@
     font-family: var(--mono);
     font-size: 12.5px;
     color: var(--up);
-    background: rgba(73,211,160,0.08);
+    background: rgba(53,184,255,0.08);
     border: 1px solid var(--up-dim);
     padding: 5px 12px;
     border-radius: 3px;
@@ -127,13 +146,13 @@
   .dot{
     width:7px; height:7px; border-radius:50%;
     background: var(--up);
-    box-shadow: 0 0 0 0 rgba(73,211,160,0.6);
+    box-shadow: 0 0 0 0 rgba(53,184,255,0.6);
     animation: pulse 2.2s infinite;
   }
   @keyframes pulse{
-    0%{ box-shadow: 0 0 0 0 rgba(73,211,160,0.45); }
-    70%{ box-shadow: 0 0 0 7px rgba(73,211,160,0); }
-    100%{ box-shadow: 0 0 0 0 rgba(73,211,160,0); }
+    0%{ box-shadow: 0 0 0 0 rgba(53,184,255,0.45); }
+    70%{ box-shadow: 0 0 0 7px rgba(53,184,255,0); }
+    100%{ box-shadow: 0 0 0 0 rgba(53,184,255,0); }
   }
   @media (prefers-reduced-motion: reduce){
     .dot{ animation: none; }
@@ -142,7 +161,7 @@
   h1{
     font-family: var(--mono);
     font-weight: 600;
-    font-size: clamp(28px, 5vw, 40px);
+    font-size: clamp(26px, 5.2vw, 40px);
     margin: 0 0 10px;
     letter-spacing: -0.01em;
   }
@@ -163,11 +182,11 @@
     border-radius: 3px;
     border: 1px solid var(--line);
     color: var(--text);
-    transition: border-color .15s ease, color .15s ease;
+    transition: border-color .15s ease, color .15s ease, background .15s ease;
   }
-  .btn:hover, .btn:focus-visible{ border-color: var(--up); color: var(--up); }
-  .btn.primary{ background: var(--up); border-color: var(--up); color: #0b1613; font-weight: 600; }
-  .btn.primary:hover, .btn.primary:focus-visible{ background: #3fc194; color:#0b1613; }
+  .btn:hover, .btn:focus-visible{ border-color: var(--up); color: var(--up); background: rgba(53,184,255,0.06); }
+  .btn.primary{ background: var(--up); border-color: var(--up); color: #05121d; font-weight: 600; }
+  .btn.primary:hover, .btn.primary:focus-visible{ background: #58c4ff; color:#05121d; }
   .btn:focus-visible{ outline: 2px solid var(--up); outline-offset: 2px; }
 
   /* ---------- section shell ---------- */
@@ -175,9 +194,9 @@
   .eyebrow{
     font-family: var(--mono);
     font-size: 12px;
-    color: var(--muted);
+    color: var(--cyan);
     text-transform: uppercase;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.14em;
     margin: 0 0 18px;
   }
   h2{ font-family: var(--mono); font-size: 20px; margin: 0 0 6px; }
@@ -201,6 +220,7 @@
   }
   .board-row:last-child{ border-bottom:none; }
   .board-row:nth-child(even){ background: var(--surface-2); }
+  .board-row:hover{ background: rgba(53,184,255,0.05); }
   .b-status{ display:flex; align-items:center; gap:7px; color: var(--up); }
   .b-status .dot{ animation:none; box-shadow:none; }
   .b-name{ color: var(--text); }
@@ -213,14 +233,17 @@
     border-radius: 4px;
     background: var(--surface);
     padding: 20px;
+    transition: border-color .15s ease;
   }
+  .card:hover{ border-color: var(--line-bright); }
   .card-head{
     display:flex; justify-content:space-between; align-items:baseline; gap: 12px; flex-wrap:wrap;
   }
   .card h3{ font-family: var(--mono); font-size: 15.5px; margin:0; }
   .card .tag{
     font-family: var(--mono); font-size: 11px; color: var(--amber);
-    border: 1px solid rgba(226,162,61,0.35); padding: 2px 8px; border-radius: 3px;
+    border: 1px solid rgba(255,157,77,0.35); padding: 2px 8px; border-radius: 3px;
+    white-space: nowrap;
   }
   .card .tag.progress{ color: var(--muted); border-color: var(--line); }
   .card p{ color: var(--muted); margin: 10px 0 12px; font-size: 14.5px; }
@@ -250,10 +273,12 @@
     font-family: var(--mono); font-size: 12.5px;
     border: 1px solid var(--line); border-radius: 3px;
     padding: 6px 12px; color: var(--muted);
+    transition: border-color .15s ease, color .15s ease;
   }
+  .cert:hover{ border-color: var(--up); color: var(--up); }
 
   /* ---------- languages ---------- */
-  .lang-row{ display:flex; gap: 24px; font-family: var(--mono); font-size: 13.5px; margin-top: 6px; }
+  .lang-row{ display:flex; gap: 24px; font-family: var(--mono); font-size: 13.5px; margin-top: 6px; flex-wrap: wrap; }
   .lang-row span.lvl{ color: var(--up); }
 
   /* ---------- contact ---------- */
@@ -261,6 +286,14 @@
     border: 1px solid var(--line); border-radius: 4px;
     background: var(--surface); padding: 24px;
     font-family: var(--mono); font-size: 14px;
+    position: relative;
+    overflow: hidden;
+  }
+  .contact-box::after{
+    content:"";
+    position: absolute; inset: 0;
+    background: linear-gradient(120deg, transparent 40%, rgba(53,184,255,0.06) 50%, transparent 60%);
+    pointer-events: none;
   }
   .contact-box .prompt{ color: var(--up); }
   .contact-links{ margin-top: 16px; display:flex; flex-wrap:wrap; gap: 18px; }
@@ -278,6 +311,8 @@
     .board-row{ grid-template-columns: 1fr; row-gap: 4px; }
     .b-note{ text-align:left; }
     .exp-item{ grid-template-columns: 1fr; }
+    section{ padding: 34px 0; }
+    .hero{ padding: 48px 0 32px; }
   }
 </style>
 </head>
@@ -304,7 +339,7 @@
         <h1>Brayan Vargas Madrigal</h1>
         <p class="role">
           <strong>Técnico de Soporte TI &amp; practicante de Ciberseguridad.</strong>
-          Mantenimiento a servidores Linux, supervición de Logs en SIEM, Desarrollo de herramientas basadas en IA —
+          Mantenimiento a servidores Linux, supervisión de logs en SIEM, desarrollo de herramientas basadas en IA —
           en San José, Costa Rica, estudiando Ciencias de la Computación en la UCR
           tras completar un técnico en Ciberseguridad.
         </p>
@@ -350,7 +385,7 @@
       </div>
       <div class="board-row">
         <div class="b-status"><span class="dot"></span>ACTIVO</div>
-        <div class="b-name">Diagnostico de Redes — TCP/IP, DNS, DHCP</div>
+        <div class="b-name">Diagnóstico de Redes — TCP/IP, DNS, DHCP</div>
         <div class="b-note">diario</div>
       </div>
       <div class="board-row">
@@ -408,7 +443,7 @@
       <div class="card">
         <div class="card-head">
           <h3>Laboratorio de Seguridad con Active Directory + Wazuh</h3>
-          <span class="tag">redes</span>
+          <span class="tag">ciberseguridad</span>
         </div>
         <p>Laboratorio casero que combina un Controlador de Dominio de Windows virtualizado con una
         instancia de Wazuh SIEM, construido para practicar gestión de usuarios, políticas de grupo
@@ -433,7 +468,7 @@
           <ul>
             <li>Brindo soporte técnico N1 a usuarios finales, diagnosticando y resolviendo incidentes de hardware y software para minimizar el tiempo de inactividad</li>
             <li>Realizo mantenimiento preventivo y correctivo en equipos de escritorio, laptops y periféricos</li>
-            <li>Registro, dio seguimiento y cerró incidentes siguiendo procedimientos alineados a ITIL dentro de los objetivos de SLA</li>
+            <li>Registro, doy seguimiento y cierro incidentes siguiendo procedimientos alineados a ITIL dentro de los objetivos de SLA</li>
             <li>Comunico soluciones técnicas de forma clara a partes interesadas internas no técnicas</li>
             <li>Promovido de practicante a meritorio tras renovación de contrato por desempeño (ene 2026)</li>
           </ul>
@@ -453,7 +488,7 @@
       </div>
       <div class="edu-item">
         <div class="edu-date">2023 — 2025</div>
-        <p class="edu-degree">Título Técnico en Ciberseguridad</p>
+        <p class="edu-degree">Título Técnico Medio en Ciberseguridad</p>
         <p class="edu-org">C.T.P. José Albertazzi Avendaño</p>
       </div>
     </div>
